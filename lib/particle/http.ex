@@ -86,6 +86,7 @@ defmodule Particle.Http do
 
   @spec authorization_header() :: {:Authorization, binary}
   defp authorization_header do
-    [{:Authorization, "Bearer #{Application.get_env(:particle, :particle_key)}"}]
+    {:ok, token} = Particle.TokenServer.get_token()
+    [{:Authorization, "Bearer #{token}"}]
   end
 end

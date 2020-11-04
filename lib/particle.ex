@@ -8,7 +8,12 @@ defmodule Particle do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
-    children = []
+    children = [
+      %{
+        id: TokenServer,
+        start: {Particle.TokenServer, :start_link, []}
+      }
+    ]
 
     opts = [strategy: :one_for_one, name: Particle.Supervisor]
     Supervisor.start_link(children, opts)
