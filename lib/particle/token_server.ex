@@ -53,10 +53,10 @@ defmodule Particle.TokenServer do
 
   def handle_call(:get_token, from, state) do
     if state.client_id == nil && state.client_secret == nil do
-      {:reply, state.particle_key, state}
+      {:reply, {:ok, state.particle_key}, state}
     else
       if state.token_timeout > System.monotonic_time(:second) do
-        {:reply, state.token, state}
+        {:reply, {:ok, state.token}, state}
       else
         GenServer.cast(__MODULE__, {:refresh_token, from})
         {:noreply, state}
