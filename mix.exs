@@ -31,9 +31,9 @@ defmodule Particle.Mixfile do
 
   defp deps do
     [
-      {:gen_stage, "~> 0.12"},
-      {:hackney, "~> 1.6"},
-      {:jason, "~> 1.1"},
+      {:gen_stage, "~> 1.0.0"},
+      {:hackney, "~> 1.16.0"},
+      {:jason, "~> 1.2.2"},
       {:credo, "~> 1.0", only: [:dev, :test]},
       {:ex_doc, "~> 0.12", only: :dev},
       {:inch_ex, "~> 2.0", only: [:dev, :test]},
